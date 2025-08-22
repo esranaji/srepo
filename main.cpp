@@ -9,7 +9,9 @@ using namespace std;
 #define ll long long
 const int MOD = 1000000007;
 
-
+/*
+its my second project
+*/
 vector<ll> generate_primes(ll limit) {
     vector<bool> is_prime(limit + 1, true);
     is_prime[0] = is_prime[1] = false;
