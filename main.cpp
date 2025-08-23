@@ -117,19 +117,21 @@ int main() {
     int t ;
     cin >> t;
     while(t--) {
-        int n ;
-        cin >> n ;
-        if (n%4!=0) {
-            cout<<  "NO"<<endl ;
-            continue;
+        int n ,sum=0 ;
+        cin >> n;
+        vector<int> a(n), b(n) ;
+
+       for (int i = 0; i < n; i++) {
+          cin>>a[i];
+       }
+        for (int i = 0; i < n; i++) {
+            cin>>b[i];
         }
-        cout<<"YES"<<endl ;
-        for (int i = 2; i <= n; i+=2) {
-            cout <<i <<' ';
+
+        for (int i = 0; i < n; i++) {
+            if (a[i]-b[i]>0)sum+=a[i]-b[i];
         }
-        for (int i = 1; i < n-1; i+=2) {
-            cout <<i <<' ';
-        }
-        cout << (n-1)+n/2 <<endl;
+        cout << sum+1<< endl;
+
     }
 }
