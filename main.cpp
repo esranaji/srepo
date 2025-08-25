@@ -122,42 +122,26 @@ pair<int,int > rem(int x ,int k) {
     int r2=(k-r)%k;
     return {r,r2};
 }
+#include <bits/stdc++.h>
+using namespace std;
+
+bool validPart(const string& s) {
+    // "0" is valid, but "01", "00", etc. are not
+    return !(s.size() > 1 && s[0] == '0');
+}
+
 int main() {
-    Speed();
-    /*
-     * commmit 4
-     */
-    int test ;
-    cin >> test;
-    while(test--) {
-        int n ,k ;
-        cin >> n >> k;
-        vector<int> t(n), s(n) ;
+    string num = "123045";  // example string
+    int n = num.size();
 
-        map<int ,int> freq_s ,freq_t;
-       for (int i = 0; i < n; i++) {
-          cin>>s[i];
-       }
-        for (int i = 0; i < n; i++) {
-            cin>>t[i];
-        }
-        for (auto e : s) {
-            auto [r1 ,r2] =rem(e,k);
-            freq_s[min(r1,r2)]++;
-        }
-        for (auto e : t) {
-            auto [r1 ,r2] =rem(e,k);
-            freq_t[min(r1,r2)]++;
-        }
-        if (freq_s==freq_t) {
-            cout<<"YES"<<endl;
-        }
+    for (int i = 1; i < n; i++) {
+        string left = num.substr(0, i);
+        string right = num.substr(i);
 
-        else {
-            cout<<"NO"<<endl;
+        if (validPart(left) && validPart(right)) {
+            cout << left << " | " << right << "\n";
         }
-
-
-
     }
+
+    return 0;
 }
