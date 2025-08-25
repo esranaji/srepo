@@ -112,27 +112,52 @@ bool isPrime(u64 n) {
     }
     return true;
 }
+void Speed() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+}
 
+pair<int,int > rem(int x ,int k) {
+    int r=x%k;
+    int r2=(k-r)%k;
+    return {r,r2};
+}
 int main() {
+    Speed();
     /*
      * commmit 4
      */
-    int t ;
-    cin >> t;
-    while(t--) {
-        int n ,sum=0 ;
-        cin >> n;
-        vector<int> a(n), b(n) ;
+    int test ;
+    cin >> test;
+    while(test--) {
+        int n ,k ;
+        cin >> n >> k;
+        vector<int> t(n), s(n) ;
 
+        map<int ,int> freq_s ,freq_t;
        for (int i = 0; i < n; i++) {
-          cin>>a[i];
+          cin>>s[i];
        }
-
-
         for (int i = 0; i < n; i++) {
-            if (a[i]-b[i]>0)sum+=a[i]-b[i];
+            cin>>t[i];
         }
-        cout << sum+1<< endl;
+        for (auto e : s) {
+            auto [r1 ,r2] =rem(e,k);
+            freq_s[min(r1,r2)]++;
+        }
+        for (auto e : t) {
+            auto [r1 ,r2] =rem(e,k);
+            freq_t[min(r1,r2)]++;
+        }
+        if (freq_s==freq_t) {
+            cout<<"YES"<<endl;
+        }
+
+        else {
+            cout<<"NO"<<endl;
+        }
+
+
 
     }
 }
