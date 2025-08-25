@@ -129,7 +129,7 @@ bool validPart(const string& s) {
     // "0" is valid, but "01", "00", etc. are not
     return !(s.size() > 1 && s[0] == '0');
 }
-
+/**/
 int main() {
     string num = "123045";  // example string
     int n = num.size();
