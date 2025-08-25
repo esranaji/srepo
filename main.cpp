@@ -145,17 +145,7 @@ int main() {
             auto [r1 ,r2] =rem(e,k);
             freq_s[min(r1,r2)]++;
         }
-        for (auto e : t) {
-            auto [r1 ,r2] =rem(e,k);
-            freq_t[min(r1,r2)]++;
-        }
-        if (freq_s==freq_t) {
-            cout<<"YES"<<endl;
-        }
 
-        else {
-            cout<<"NO"<<endl;
-        }
 
 
 
