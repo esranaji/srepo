@@ -125,23 +125,30 @@ pair<int,int > rem(int x ,int k) {
 #include <bits/stdc++.h>
 using namespace std;
 
+#include <bits/stdc++.h>
+using namespace std;
+
 bool validPart(const string& s) {
-    // "0" is valid, but "01", "00", etc. are not
+    // valid if it's "0" or doesn't start with '0'
     return !(s.size() > 1 && s[0] == '0');
 }
-/**/
-int main() {
-    string num = "123045";  // example string
-    int n = num.size();
 
+int main() {
+    string num = "0100230";
+
+    // remove leading zeros from the whole string
+    int start = 0;
+    while (start < (int)num.size() && num[start] == '0') start++;
+    num = num.substr(start);
+
+    int n = num.size();
     for (int i = 1; i < n; i++) {
         string left = num.substr(0, i);
         string right = num.substr(i);
 
         if (validPart(left) && validPart(right)) {
-            cout << left << " | " << right << "\n";
+            cout << left << " " << right << "\n";
+            break; // stop after first valid split
         }
     }
-
-    return 0;
 }
