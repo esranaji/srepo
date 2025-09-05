@@ -7,7 +7,7 @@
 #include <deque>
 using namespace std;
 #define ll long long
-const int MOD = 1000000007;
+const int MOD = 1e9+7;
 
 
 vector<ll> generate_primes(ll limit) {
@@ -142,27 +142,69 @@ string addStrings(const string &a, const string &b) {
     reverse(res.begin(), res.end());
     return res;
 }
-#include <bits/stdc++.h>
-using namespace std;
 
 
-vector<int> toBase(long long n, int base) {
-    if (n == 0) return {0};
 
-    vector<int> result;
+
+string decimalToBase(long long n, int base) {
+    if (n == 0) return "0";
+
+    string digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    string result = "";
+
     while (n > 0) {
         int rem = n % base;
-        result.push_back(rem);
+        result.push_back(digits[rem]);
         n /= base;
     }
+
     reverse(result.begin(), result.end());
     return result;
 }
 
-int main() {
-    int t , n, x  ;
-    cin >> t , n ,x ;
-    if (t==1) {
-        vector<int> base = toBase(1000000000, 10);
+
+long long baseToDecimal(string num, int base) {
+    long long result = 0;
+    for (char c : num) {
+        int val;
+        if (isdigit(c)) val = c - '0';
+        else val = c - 'A' + 10;
+        result = result * base + val;
     }
+    return result;
 }
+
+long long modpow(long long base, long long exp, long long mod) {
+    long long result = 1;
+    base %= mod;
+    while (exp > 0) {
+        if (exp & 1) result = (result * base) % mod;
+        base = (base * base) % mod;
+        exp >>= 1;
+    }
+    return result;
+}
+
+
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+     int n ;
+    cin >>n;
+     map<int,int> m ;
+     while (n--) {
+         int x ;
+         cin >>x ;
+         m[x]++;
+     }
+    long long ans = 0;
+    for (auto &p : m) {
+        int c = p.second;
+        ll sub=(modpow(2,c,MOD)-1+MOD )%MOD ;
+        ans = (ans + sub) % MOD;
+    }
+    cout << ans << endl;
+
+}
+
