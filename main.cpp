@@ -125,30 +125,44 @@ pair<int,int > rem(int x ,int k) {
 #include <bits/stdc++.h>
 using namespace std;
 
+
 #include <bits/stdc++.h>
 using namespace std;
 
-bool validPart(const string& s) {
-    // valid if it's "0" or doesn't start with '0'
-    return !(s.size() > 1 && s[0] == '0');
+string addStrings(const string &a, const string &b) {
+    int i = (int)a.size() - 1, j = (int)b.size() - 1, carry = 0;
+    string res;
+    while (i >= 0 || j >= 0 || carry) {
+        int x = (i >= 0 ? a[i--] - '0' : 0);
+        int y = (j >= 0 ? b[j--] - '0' : 0);
+        int s = x + y + carry;
+        res.push_back(char('0' + (s % 10)));
+        carry = s / 10;
+    }
+    reverse(res.begin(), res.end());
+    return res;
+}
+#include <bits/stdc++.h>
+using namespace std;
+
+
+vector<int> toBase(long long n, int base) {
+    if (n == 0) return {0};
+
+    vector<int> result;
+    while (n > 0) {
+        int rem = n % base;
+        result.push_back(rem);
+        n /= base;
+    }
+    reverse(result.begin(), result.end());
+    return result;
 }
 
 int main() {
-    string num = "0100230";
-
-    // remove leading zeros from the whole string
-    int start = 0;
-    while (start < (int)num.size() && num[start] == '0') start++;
-    num = num.substr(start);
-
-    int n = num.size();
-    for (int i = 1; i < n; i++) {
-        string left = num.substr(0, i);
-        string right = num.substr(i);
-
-        if (validPart(left) && validPart(right)) {
-            cout << left << " " << right << "\n";
-            break; // stop after first valid split
-        }
+    int t , n, x  ;
+    cin >> t , n ,x ;
+    if (t==1) {
+        vector<int> base = toBase(1000000000, 10);
     }
 }
