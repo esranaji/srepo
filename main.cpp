@@ -190,21 +190,12 @@ long long modpow(long long base, long long exp, long long mod) {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-     int n ;
-    cin >>n;
-     map<int,int> m ;
-     while (n--) {
-         int x ;
-         cin >>x ;
-         m[x]++;
-     }
-    long long ans = 0;
-    for (auto &p : m) {
-        int c = p.second;
-        ll sub=(modpow(2,c,MOD)-1+MOD )%MOD ;
-        ans = (ans + sub) % MOD;
-    }
-    cout << ans << endl;
+
+     int n ,a,b;
+     cin>>n>>a>>b;
+
+
 
 }
+
 
