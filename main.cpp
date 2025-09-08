@@ -183,7 +183,7 @@ int t ;
                 cout<<v[i]<<" ";
             }
         }
-       cout << endl;
+
     }
 
 
