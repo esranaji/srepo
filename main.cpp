@@ -180,7 +180,7 @@ int main() {
 
         }
     }
-
+    cout<<(mn==INT_MAX?-1 : mn)<<endl;
 }
 
 
