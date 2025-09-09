@@ -160,33 +160,27 @@ long long modpow(long long base, long long exp, long long mod) {
 
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-int t ;
-    cin >>t ;
-    while(t--) {
-        int n ;
-        cin >> n;
-        set<int> s;
-        vector<int>v;
-        for (int i = 0; i < n; i++) {
-            int x ;
-            cin >> x ;
-            v.push_back(x);
-            s.insert(x);
-        }
-        int sum=0;
-       for (int i1 : s) sum+=i1;
-        if (sum>n)cout << -1 ;
-        else {
-            for (int i=0; i < n ;i++) {
-                cout<<v[i]<<" ";
-            }
-        }
-       cout << endl;
+    int n,gold ;
+    cin >>n >>gold;
+    vector<int>v;
+    for (int i = 0; i < n; i++) {
+        int x ;cin >>x ;
+        v.push_back(x);
     }
+    int l=0  ,sum=0,mn=INT_MAX;
 
+    for (int i = 0; i < v.size(); i++) {
 
+        sum+=v[i];
+
+        while (sum>=gold) {
+            mn=min(mn,i-l+1);
+            sum-=v[l];
+            l++;
+
+        }
+    }
+    cout<<(mn==INT_MAX?-1 : mn)<<endl;
 }
 
 
