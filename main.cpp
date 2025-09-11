@@ -160,16 +160,13 @@ long long modpow(long long base, long long exp, long long mod) {
 
 
 int main() {
-    int n,gold ;
-    cin >>n >>gold;
-    vector<int>v;
-    for (int i = 0; i < n; i++) {
-        int x ;cin >>x ;
-        v.push_back(x);
-    }
-    int l=0  ,sum=0,mn=INT_MAX;
-
-    for (int i = 0; i < v.size(); i++) {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n ,m ;
+    cin >> n >> m ;
+    ll _2=pow(2,n);
+    ll x =m%_2;
+    cout<<x<<endl;
 
         sum+=v[i];
 
