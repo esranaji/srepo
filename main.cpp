@@ -27,7 +27,9 @@ int main() {
             return a.back() < b.back();
         });
 
-
+/*
+ * pul req
+ */
         for (int i = 0; i < n; i++) {
             if (v[i][0] <=k && v[i][1]>=k )
                 k=max(v[i][2],k);
