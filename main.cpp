@@ -1,38 +1,56 @@
 #include <iostream>
+#include <map>
 #include <vector>
 using namespace std;
+#include <bits/stdc++.h>
+using namespace std;
+ vector<int>v ;
+int sub=0;
+int sum(int l ,int r) {
+    sub=0;
+  for (int i=l;i<=r;i++) {
+      sub+=v[i];
+  }
+    return sub;
 
+
+}
 int main() {
-    int t;
-    cin >> t;
+    int t ;
+    cin >>t ;
     while (t--) {
+        v.clear();
         int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
+        cin>>n;
+
+        for (int i=0;i<n;i++) {
+            int x ;
+            cin>>x;
+            v.push_back(x);
         }
-        vector<int> P(n+1, 0);
-        for (int i = 1; i <= n; i++) {
-            P[i] = (P[i-1] + a[i-1]) % 3;
-        }
-        bool found = false;
-        for (int l = 1; l <= n-2; l++) {
-            for (int r = l+1; r <= n-1; r++) {
-                int s1 = P[l] % 3;
-                int s2 = (P[r] - P[l] + 3) % 3;
-                int s3 = (P[n] - P[r] + 3) % 3;
-                if ((s1 == s2 && s2 == s3) || (s1 != s2 && s1 != s3 && s2 != s3)) {
-                    cout << l << " " << r << endl;
-                    found = true;
-                    break;
+        int ansl=0 ,ansr=0;
+        bool f=false;
+        for (int l=0;l<n;l++) {
+
+            for (int r=l+1;r<n-1;r++) {
+                set<int>set;
+                int s1=sum(0,l)%3;
+                int s2=sum(l+1,r)%3;
+                int s3=sum(r+1,n-1)%3;
+                set.insert(s1);
+                set.insert(s2);
+                set.insert(s3);
+                if ((int)set.size()==3 || (int)set.size()==1) {
+                    ansl=l;
+                    ansr=r;
+                    f=true ; break;
                 }
+
             }
-            if (found) break;
+            if (f)break;;
         }
-        if (!found) {
-            cout << "0 0" << endl;
-        }
+      if (f)
+        cout<<ansl+1<<" "<<ansr+1<<endl;
+        else cout<<0<<" "<<0<<endl;
     }
-    return 0;
 }
