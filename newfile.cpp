@@ -8,6 +8,16 @@
 using namespace std;
 #define ll long long
 const int MOD = 1e9+7;
+bool prime(long long n) {
+    if (n < 2) return false;
+    if (n == 2 || n == 3) return true;
+    if (n % 2 == 0) return false;
+
+    for (long long i = 3; i * i <= n; i += 2) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
 
 
 ll add(ll a, ll b) {
@@ -39,7 +49,29 @@ void solve (string a , ll  b ) {
 
 vector<bool> prime;
 vector<int> primes;
+vector<ll> primeFactors(ll n) {
+    vector<ll> factors;
 
+
+    while (n % 2 == 0) {
+        factors.push_back(2);
+        n = n / 2;
+    }
+
+
+    for (ll i = 3; i * i <= n; i += 2) {
+        while (n % i == 0) {
+            factors.push_back(i);
+            n = n / i;
+        }
+
+    }
+    if (n > 2) {
+        factors.push_back(n);
+    }
+
+    return factors;
+}
 void Sieve(int n) {
     prime.assign(n + 1, true);
     prime[0] = prime[1] = 0;
