@@ -1,18 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
+
+
+
 
 int main() {
-    int t ;
-    cin >> t;
-    while(t--) {
-        int u ,v ;
-        cin >> u >> v ;
-        ll mx=max(u,v);
-        ll mn = min(u,v);
-         ll ans1=(mn*mn) ;
-        ll ans2=-1*(mx*mx) ;
-        cout<<ans1<<" "<<ans2 <<endl;
+    string s,t ;
+    cin >> s >> t;
+    deque<char> d;
+    int count=0;
+    bool flag=false;
+    for (int i = 0; i < s.length(); i++) {
+       d.push_back(s[i]);
     }
+    for (int i = 0; i < t.length(); i++) {
+         char c =d.back();
+         d.pop_back();
+        d.push_front(c);
+        if (t==string(d.begin() , d.end()));
+    }
+
 }
-/**/
