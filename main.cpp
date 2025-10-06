@@ -1,23 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
-
 int main() {
-    string s,t ;
-    cin >> s >> t;
-    deque<char> d;
-    int count=0;
-    bool flag=false;
-    for (int i = 0; i < s.length(); i++) {
-       d.push_back(s[i]);
-    }
-    for (int i = 0; i < t.length(); i++) {
-         char c =d.back();
-         d.pop_back();
-        d.push_front(c);
-        if (t==string(d.begin() , d.end()));
-    }
-
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+   int n;
+    cin>>n;
+   deque<pair<long long, long long>> a;
+    for (int i = 0; i < n; i++){
+       int type ;
+        cin>>type;
+        if (type == 1) {
+            int number  , freq ;
+            cin>>number>>freq;
+            a.push_back({number, freq});
+        }
+        else {
+            int number ;
+            cin>>number;
+            int sum=0;
+            for (int j = 0; j < number && !a.empty(); j++) {
+                sum+= a.front().second;
+                a.pop_front();
+            }
+        }
+    };
 }
