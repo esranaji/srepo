@@ -2,27 +2,30 @@
 using namespace std;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-   int n;
-    cin>>n;
-   deque<pair<long long, long long>> a;
-    for (int i = 0; i < n; i++){
-       int type ;
-        cin>>type;
-        if (type == 1) {
-            int number  , freq ;
-            cin>>number>>freq;
-            a.push_back({number, freq});
-        }
-        else {
-            int number ;
-            cin>>number;
-            int sum=0;
-            for (int j = 0; j < number && !a.empty(); j++) {
-                sum+= a.front().second;
-                a.pop_front();
-            }
-        }
-    };
+   int t;
+   cin>>t;
+   while(t--) {
+       int n,k;
+       cin>>n>>k;
+       map<int,int> mp;
+       for(int i=0;i<n;i++) {
+           mp[i]=0;
+       }
+       for(int i=0;i<n;i++) {
+           int x;
+           cin>>x;
+           mp[x]++;
+       }
+       int count=0;
+      int countk=0;
+       for (auto [k1,v] : mp) {
+           if (k1<k && v==0)
+               count++;
+           else if (k1==k)
+               countk=v;
+
+       }
+
+       cout<<max(count,countk)<<endl;
+   }
 }
