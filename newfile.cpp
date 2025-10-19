@@ -9,11 +9,6 @@ using namespace std;
 #define ll long long
 const int MOD = 1e9+7;
 
-
-
-
-
-
 bool prime(long long n) {
     if (n < 2) return false;
     if (n == 2 || n == 3) return true;
@@ -25,6 +20,23 @@ bool prime(long long n) {
     return true;
 }
 
+int LCS(string a, string b) {
+    int mxlen = 0;
+    int mn = min(a.length(), b.length());
+
+    for (int len = 1; len <= mn; len++) {
+        for (int i = 0; i + len <= a.length(); i++) {
+            for (int j = 0; j + len <= b.length(); j++) {
+                string s1 = a.substr(i, len);
+                string s2 = b.substr(j, len);
+                if (s1 == s2) {
+                    mxlen = max(mxlen, len);
+                }
+            }
+        }
+    }
+    return mxlen;
+}
 
 ll add(ll a, ll b) {
     return ( (a % MOD) + (b % MOD) ) % MOD;
